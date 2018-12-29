@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+<style>
+	    * {
+				margin: 0px;
+				font-family: 楷体;
+				font-size: 1.0rem;
+			}
+			
+			body {
+				width: 100%;
+				height: 100vh;
+				background-color: #FFCC99;
+			}
+			
+			.header {
+				width: 100%;
+				height: 12%;
+				background-color: aquamarine;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.base {
+				width: 100%;
+				height: 80%;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: center;
+			}
+			
+		
+		
+		
+		
+			.footer {
+				width: 100%;
+				height: 8%;
+				background-color: aquamarine;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		</style>
+
+</head>
+<body>
+	<div class="header"></div>
+             
+		
+	<div class="base">		
+		 <canvas id="mountNode"></canvas>
+	</div>
+		
+		
+	<div class="footer"></div>
+                 
+</body>
+<script src="https://gw.alipayobjects.com/os/antv/assets/f2/3.3.0/f2.min.js"></script>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+	//alert("请求报表");
+	
+	$.ajax({
+		type:'post',
+		url:"http://iysgp5.natappfree.cc/antv",
+		data:{"datas":"nannvbili"},
+		dataType:"json",
+		success:function(datas)
+		{	
+			var jdata=datas.jsonDatas;
+		    createView(jdata);
+		}
+		
+	})
+	
+	
+//	var formdata=new FormData();
+//	formdata.append("datas","nannvbili");
+//	var options={method:'post',body:formdata};
+//
+//	fetch("http://ygsfza.natappfree.cc/antvv",options).then(function(response)
+//	{
+//			
+//		if(response.status==200)
+//		{
+//			response.json().then(function(datas)
+//			{
+//				alert(datas.jsondata);
+//				createView(datas.jsondata);
+//			});
+//		}
+//	}).catch(function(error){});
+	
+	
+	
+	function createView(data)
+	{
+		var chart=new F2.Chart({
+			id:'mountNode',
+			pixelRatio: window.devicePixelRatio
+
+		});
+		
+		chart.source(data, {
+		   sales: {
+			   tickCount: 2
+          }
+	    });
+	    
+	    chart.interval().position('sname*scount');
+		chart.render();
+
+
+	}
+</script>
+</html>

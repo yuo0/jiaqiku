@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <style type="text/css">
+        .caidan{
+         width:100%;
+          height:20px;
+          font-familly:黑体;
+          font-size:20px;
+            }
+           .caidan li{
+          float:left;
+          margin:15px;
+          list-style:none;
+        }
+    </style>
+</head>
+<body>
+<ul class="caidan">
+    {% for data in contentdata %}
+    <li>{{ data["kname"] }}</li>
+    {% end %}
+</ul>
+</body>
+</html>

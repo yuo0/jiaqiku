@@ -1,0 +1,154 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>index</title>
+<style type="text/css">
+  * {
+				margin: 0px;
+				font-family: 楷体;
+				font-size: 0.8rem;
+			}
+			
+			body {
+				width: 100%;
+				height: 100vh;
+				background-color: #FFCC99;
+			}
+			
+			.header {
+				width: 100%;
+				height: 15%;
+				background-color: aquamarine;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size:50px;
+			}
+			
+			.tu{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size:30px;
+			    width:100%;
+			    height:8%;
+			    border-bottom:px solid white;
+			}
+			
+			/*.tu img{
+			    width:100%;
+			    height:100%;
+			}*/
+			
+			.toutu{
+				width:100%;
+			    height:100%;
+			}
+			
+			.tianqi{
+			    width: 100%;
+				height: 5%;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: center;
+				border:1px solid white;
+				font-size:20px;
+			}
+			
+			.base {
+				width: 100%;
+				height: 62%;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: center;
+			}
+			.cell{
+				width: 100px;
+				height: 80px;
+				border: 2px  solid  #CA8EFF;
+				margin: 10px;
+				border-radius: 5px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				font-family: 黑体;
+				color: white;
+				font-size: 20px;
+			}
+			img
+			{
+				width: 50px;
+				height:50px;
+			}
+			.footer {
+				width: 100%;
+				height: 10%;
+				background-color: white;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border:px solid;
+			}
+  
+</style>
+</head>
+<body>
+  <div class="header"><img class="toutu" src="../img/nankeyuan.png"></div>
+  <div class="tu">语言类</div>
+  <div class="tianqi">天气</div>
+  <div class="base"></div>
+  <div class="footer"></div>
+</body>
+<script type="text/javascript">
+  
+var  baseObj= document.getElementsByClassName("base")[0];
+
+function UrlSearch()
+{
+	
+	
+	var url =decodeURIComponent(location.search);
+  //alert(url);
+	
+	
+	var  str=url.substr(url.indexOf("=")+1);
+    //alert(str); 
+    var datas=JSON.parse(str);
+    alert(datas);
+    datas.forEach(function(value,index){
+	
+	   //alert(value["kname"]);
+	   var  divObj= document.createElement("div");
+	   divObj.className="cell";
+	   divObj.setAttribute("onclick","forward('"+value["url"]+"')")
+	   divObj.innerText=value["kname"];
+	   baseObj.appendChild(divObj);
+	   //alert(value["iurl"]);
+	   var imgObj=document.createElement("img");
+	   imgObj.setAttribute("src",value["iurl"]);
+	   divObj.appendChild(imgObj);
+
+	   
+    });
+    
+    
+    
+	
+}
+UrlSearch();
+
+function forward(id)
+{
+	
+    window.location.href=id;
+	
+}
+ 
+  
+</script>
+</html>
