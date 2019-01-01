@@ -2,7 +2,10 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title></title>
+		<link rel="stylesheet" href="https://gw.alipayobjects.com/os/rmsportal/YmDAMEQVbLJpVbKiRQVX.css" />
+
 <style>
 	    * {
 				margin: 0px;
@@ -19,10 +22,13 @@
 			.header {
 				width: 100%;
 				height: 12%;
-				background-color: aquamarine;
+				background-color:	#CD5C5C;
+				color:white;
 				display: flex;
 				justify-content: center;
 				align-items: center;
+				font-family: 楷体;
+				font-size: 2.5em;
 			}
 			
 			.base {
@@ -34,7 +40,17 @@
 				align-items: center;
 			}
 			
-		
+		   .anniu{
+		    	margin-top: 200px;
+			width: 100px;
+			height: 40px;
+			border: 3px solid #A52A2A;
+			font-size: 1.4em;
+			font-weight: bold;
+          border-radius: 0px;
+          background-color:#CDAA7D;
+          color:white;
+        }
 		
 		
 		
@@ -50,12 +66,13 @@
 
 </head>
 <body>
-	<div class="header"></div>
+	<div class="header">职务比</div>
            		
 	<div class="base">	
 		<div class="chart-wrapper">
 		 <canvas id="mountNode"></canvas>
 		</div>
+		<a href="xuan.html"><input class="anniu" type="button" value="返回" /></a>
 	</div>
 		
 	<div class="footer"></div>
@@ -69,7 +86,7 @@
 	formdata.append("datas","zhiwubili");
 	var options={method:'post',body:formdata};
 
-	fetch("http://4xmi3r.natappfree.cc/antvv",options).then(function(response)
+	fetch("http://5y6b82.natappfree.cc/antv",options).then(function(response)
 	{
 			
 		if(response.status==200)
@@ -92,7 +109,7 @@
 		});
 	  
 	  
-		chart.source(datas, {
+		chart.source(data, {
 		  percent: {
 		    formatter: function formatter(val) {
 		      return val * 100 + '%';
@@ -110,7 +127,7 @@
 		
 		chart.axis(false);
 		
-		chart.interval().position('a*count').color('name', ['#1890FF', '#13C2C2', '#2FC25B', '#FACC14', '#F04864', '#8543E0']).adjust('stack').style({
+		chart.interval().position('a*scount').color('sname', ['#1890FF', '#13C2C2', '#2FC25B', '#FACC14', '#F04864', '#8543E0']).adjust('stack').style({
 		  lineWidth: 1,
 		  stroke: '#fff',
 		  lineJoin: 'round',

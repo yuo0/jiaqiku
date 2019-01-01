@@ -145,6 +145,36 @@
 					"html/index.html"
 				],
 				"priority": 0
+			},
+			"html/xuan.html": {
+				"resources": [],
+				"refer": [
+					"html/a.html",
+					"html/b.html",
+					"html/e.html"
+				],
+				"priority": 0
+			},
+			"html/a.html": {
+				"resources": [],
+				"refer": [
+					"html/xuan.html"
+				],
+				"priority": 0
+			},
+			"html/e.html": {
+				"resources": [],
+				"refer": [
+					"html/xuan.html"
+				],
+				"priority": 0
+			},
+			"html/b.html": {
+				"resources": [],
+				"refer": [
+					"html/xuan.html"
+				],
+				"priority": 0
 			}
 		},
 		"idle": {

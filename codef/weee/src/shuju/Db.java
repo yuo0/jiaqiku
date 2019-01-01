@@ -285,10 +285,168 @@ public class Db
 		return a;
 	}
 	
+	public List jiaoshi()//报表教室
+	{
+		List<Zhiwu> a=new ArrayList<Zhiwu>();
+		try
+		{
+			PreparedStatement biao=lian.prepareStatement("SELECT COUNT(baddress),baddress FROM t_stu INNER JOIN t_banji GROUP BY baddress");
+			ResultSet jie=biao.executeQuery();
+			while(jie.next())
+			{
+				Zhiwu z=new Zhiwu();
+				z.setCount(jie.getInt(1));
+				z.setName(jie.getString(2));
+				a.add(z);
+			}
+			//System.out.println(a);
+		} catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		finally
+		{
+			if(null!=lian)
+			{
+				try
+				{
+					lian.close();
+				} catch (SQLException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return a;
+		
+	}
+	
+	public List xuanke()//报表 选课
+	{
+		List<Zhiwu> a=new ArrayList<Zhiwu>();
+		try
+		{
+			PreparedStatement biao=lian.prepareStatement("SELECT COUNT(kname),kname FROM t_stu INNER JOIN t_kemu ON sbid=kid GROUP BY kname");
+			ResultSet jie=biao.executeQuery();
+			while(jie.next())
+			{
+				Zhiwu z=new Zhiwu();
+				z.setCount(jie.getInt(1));
+				z.setName(jie.getString(2));
+				a.add(z);
+			}
+			//System.out.println(a);
+		} catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		finally
+		{
+			if(null!=lian)
+			{
+				try
+				{
+					lian.close();
+				} catch (SQLException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return a;
+		
+	}
+	
+	public List javanannv()//报表 JAVA男女
+	{
+		List<Zhiwu> a=new ArrayList<Zhiwu>();
+		try
+		{
+			PreparedStatement biao=lian.prepareStatement("SELECT COUNT(ssex),ssex FROM (SELECT * FROM t_stu INNER JOIN t_kemu ON sbid=kid WHERE kname='JAVA')temp GROUP BY ssex\r\n" + 
+					"");
+			ResultSet jie=biao.executeQuery();
+			while(jie.next())
+			{
+				Zhiwu z=new Zhiwu();
+				z.setCount(jie.getInt(1));
+				z.setName(jie.getString(2));
+				a.add(z);
+			}
+			//System.out.println(a);
+		} catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		finally
+		{
+			if(null!=lian)
+			{
+				try
+				{
+					lian.close();
+				} catch (SQLException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return a;
+		
+	}
+	
+	public List pythonnannv()//报表 python男女
+	{
+		List<Zhiwu> a=new ArrayList<Zhiwu>();
+		try
+		{
+			PreparedStatement biao=lian.prepareStatement("SELECT COUNT(ssex),ssex FROM (SELECT * FROM t_stu INNER JOIN t_kemu ON sbid=kid WHERE kname='Python')temp GROUP BY ssex\r\n" + 
+					"");
+			ResultSet jie=biao.executeQuery();
+			while(jie.next())
+			{
+				Zhiwu z=new Zhiwu();
+				z.setCount(jie.getInt(1));
+				z.setName(jie.getString(2));
+				a.add(z);
+			}
+			//System.out.println(a);
+		} catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		finally
+		{
+			if(null!=lian)
+			{
+				try
+				{
+					lian.close();
+				} catch (SQLException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return a;
+		
+	}
+	
 	public static void main(String[] args)
 	{
 		Db d=new Db();
-		//d.querole();
+		d.jiaoshi();
 		
 //		List<Sexshu> l=d.quesexshu();
 //		List<Zhiwu> l=d.zhiwu();

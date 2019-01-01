@@ -68,8 +68,9 @@ class userh(tornado.web.RequestHandler):
 
 class antvhandler(tornado.web.RequestHandler):
     def post(self, *args, **kwargs):
-        print("接受到antv请求")
+        #print("接受到antv请求")
         method = self.get_argument("datas")
+        print(method)
         if method == "nannvbili":
             url = "http://127.0.0.1:8009/user?wsdl"
             service = suds.client.Client(url)
@@ -79,15 +80,51 @@ class antvhandler(tornado.web.RequestHandler):
             print("jsonDatas-->", jsonDatas)
             self.finish({"jsonDatas": jsonDatas})
 
-        # elif method=="zhiwubili":
-        #     url = "http://127.0.0.1:8009/user?wsdl"
-        #     service = suds.client.Client(url)
-        #     datas = service.service.nzhiwu()
-        #     print("datas---", datas)
-        #     print(type(datas))
-        #     jsondatas = json.loads(datas)
-        #     print("jsondatas---", jsondatas)
-        #     self.finish({"jsondata": jsondatas})
+        elif method=="zhiwubili":
+            url = "http://127.0.0.1:8009/user?wsdl"
+            service = suds.client.Client(url)
+            datas = service.service.nzhiwu()
+            print("datas---", datas)
+            #print(type(datas))
+            jsondatas = json.loads(datas)
+            print("jsondatas---", jsondatas)
+            self.finish({"jsondata": jsondatas})
+        elif method=="jiaoshi":
+            url = "http://127.0.0.1:8009/user?wsdl"
+            service = suds.client.Client(url)
+            datas = service.service.jiaoshi()
+            print("datas---", datas)
+            #print(type(datas))
+            jsondatas = json.loads(datas)
+            print("jsondatas---", jsondatas)
+            self.finish({"jsondata": jsondatas})
+        elif method=="xuanke":
+            url = "http://127.0.0.1:8009/user?wsdl"
+            service = suds.client.Client(url)
+            datas = service.service.xuanke()
+            print("datas---", datas)
+            #print(type(datas))
+            jsondatas = json.loads(datas)
+            print("jsondatas---", jsondatas)
+            self.finish({"jsondata": jsondatas})
+        elif method=="javanannv":
+            url = "http://127.0.0.1:8009/user?wsdl"
+            service = suds.client.Client(url)
+            datas = service.service.javanannv()
+            print("datas---", datas)
+            #print(type(datas))
+            jsondatas = json.loads(datas)
+            print("jsondatas---", jsondatas)
+            self.finish({"jsondata": jsondatas})
+        elif method=="pythonnannv":
+            url = "http://127.0.0.1:8009/user?wsdl"
+            service = suds.client.Client(url)
+            datas = service.service.pythonnannv()
+            print("datas---", datas)
+            #print(type(datas))
+            jsondatas = json.loads(datas)
+            print("jsondatas---", jsondatas)
+            self.finish({"jsondata": jsondatas})
 
 
 
@@ -98,8 +135,8 @@ settings={ "template_path":"template",
 
 
 app=tornado.web.Application([(r'/',IndexHandler),
-                             (r'/user',userh),],
-                            (r'/antv',antvhandler),
+                             (r'/user',userh),
+                            (r'/antv',antvhandler),],
                             **settings)
 
 

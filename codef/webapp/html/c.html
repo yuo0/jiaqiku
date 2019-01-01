@@ -33,13 +33,12 @@
 				width: 100%;
 				height: 80%;
 				display: flex;
-				flex-direction: column;
 				flex-wrap: wrap;
 				justify-content: center;
 				align-items: center;
 			}
 			
-		    .anniu{
+		   .anniu{
 		    	margin-top: 200px;
 			width: 100px;
 			height: 40px;
@@ -65,12 +64,11 @@
 
 </head>
 <body>
-	<div class="header">男女比</div>
+	<div class="header">教室比</div>
              
 		
 	<div class="base">		
 		 <canvas id="mountNode"></canvas>
-		 
 		<a href="xuan.html"><input class="anniu" type="button" value="返回" /></a> 
 	</div>
 		
@@ -98,7 +96,7 @@
 	
 	
 	var formdata=new FormData();
-	formdata.append("datas","nannvbili");
+	formdata.append("datas","jiaoshi");
 	var options={method:'post',body:formdata};
 
 	fetch("http://5y6b82.natappfree.cc/antv",options).then(function(response)
@@ -108,8 +106,8 @@
 		{
 			response.json().then(function(datas)
 			{
-				alert(datas.jsonDatas);
-				createView(datas.jsonDatas);
+				alert(datas.jsondata);
+				createView(datas.jsondata);
 			});
 		}
 	}).catch(function(error){});
@@ -130,7 +128,7 @@
           }
 	    });
 	    
-	    chart.interval().position('sname*scount');
+	    chart.interval().position('name*count');
 		chart.render();
 
 

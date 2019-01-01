@@ -4,6 +4,8 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title></title>
+		<link rel="stylesheet" href="https://gw.alipayobjects.com/os/rmsportal/YmDAMEQVbLJpVbKiRQVX.css" />
+
 <style>
 	    * {
 				margin: 0px;
@@ -33,13 +35,13 @@
 				width: 100%;
 				height: 80%;
 				display: flex;
-				flex-direction: column;
 				flex-wrap: wrap;
 				justify-content: center;
 				align-items: center;
 			}
 			
-		    .anniu{
+		
+		   .anniu{
 		    	margin-top: 200px;
 			width: 100px;
 			height: 40px;
@@ -50,7 +52,6 @@
           background-color:#CDAA7D;
           color:white;
         }
-		
 		
 		
 			.footer {
@@ -65,40 +66,24 @@
 
 </head>
 <body>
-	<div class="header">男女比</div>
-             
-		
-	<div class="base">		
+	<div class="header">课程比</div>
+           		
+	<div class="base">	
+		<div class="chart-wrapper">
 		 <canvas id="mountNode"></canvas>
-		 
+		</div>
 		<a href="xuan.html"><input class="anniu" type="button" value="返回" /></a> 
 	</div>
 		
-		
 	<div class="footer"></div>
-                 
+                   
 </body>
 <script src="https://gw.alipayobjects.com/os/antv/assets/f2/3.3.0/f2.min.js"></script>
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript">
 	//alert("请求报表");
 	
-//	$.ajax({
-//		type:'post',
-//		url:"http://5y6b82.natappfree.cc/antv",
-//		data:{"datas":"nannvbili"},
-//		dataType:"json",
-//		success:function(datas)
-//		{	
-//			var jdata=datas.jsonDatas;
-//		    createView(jdata);
-//		}
-//		
-//	})
-	
-	
 	var formdata=new FormData();
-	formdata.append("datas","nannvbili");
+	formdata.append("datas","xuanke");
 	var options={method:'post',body:formdata};
 
 	fetch("http://5y6b82.natappfree.cc/antv",options).then(function(response)
@@ -108,29 +93,52 @@
 		{
 			response.json().then(function(datas)
 			{
-				alert(datas.jsonDatas);
-				createView(datas.jsonDatas);
+				alert(datas.jsondata);
+				createView(datas.jsondata);
 			});
 		}
 	}).catch(function(error){});
 	
-	
-	
 	function createView(data)
 	{
-		var chart=new F2.Chart({
-			id:'mountNode',
-			pixelRatio: window.devicePixelRatio
-
+		 var  a="1";
+	  
+	  var chart = new F2.Chart({
+		  id: 'mountNode',
+		  pixelRatio: window.devicePixelRatio
+		});
+	  
+	  
+		chart.source(data, {
+		  percent: {
+		    formatter: function formatter(val) {
+		      return val * 100 + '%';
+		    }
+		  }
 		});
 		
-		chart.source(data, {
-		   sales: {
-			   tickCount: 2
-          }
-	    });
-	    
-	    chart.interval().position('sname*scount');
+		
+		chart.tooltip(false);
+			
+		chart.coord('polar', {
+		  transposed: true,
+		  radius: 0.85
+		});
+		
+		chart.axis(false);
+		
+		chart.interval().position('a*count').color('name', ['#1890FF', '#13C2C2', '#2FC25B', '#FACC14', '#F04864', '#8543E0']).adjust('stack').style({
+		  lineWidth: 1,
+		  stroke: '#fff',
+		  lineJoin: 'round',
+		  lineCap: 'round'
+		}).animate({
+		  appear: {
+		    duration: 1200,
+		    easing: 'bounceOut'
+		  }
+		});
+
 		chart.render();
 
 

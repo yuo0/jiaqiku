@@ -159,7 +159,7 @@ public class UserServiceImpl implements IUserService
 		
 		Db d=new Db();
 		List<Zhiwu> l=d.zhiwu();
-		System.out.println(l.size());
+		//System.out.println(l.size());
 		
 		JSONArray a=new JSONArray();
 		for(Zhiwu r:l)
@@ -181,6 +181,58 @@ public class UserServiceImpl implements IUserService
 		UserServiceImpl u=new UserServiceImpl();
 	    System.out.println(u.quesexshu());
 		//System.out.println(u.quejianchadenglu("香香",000));
+	}
+
+	@Override
+	public String jiaoshi()
+	{
+		// TODO Auto-generated method stub
+		System.out.println("jiaoshi is start...  ");
+		
+		Db d=new Db();
+		List<Zhiwu> l=d.jiaoshi();
+		String sjson=com.alibaba.fastjson.JSONArray.toJSONString(l);
+		System.out.println(sjson);
+		return sjson;
+	}
+
+	@Override
+	public String xuanke()//报表 选课
+	{
+		// TODO Auto-generated method stub
+        System.out.println("jiaoshi is start...  ");
+		
+		Db d=new Db();
+		List<Zhiwu> l=d.xuanke();
+		String sjson=com.alibaba.fastjson.JSONArray.toJSONString(l);
+		System.out.println(sjson);
+		return sjson; 
+	}
+
+	@Override
+	public String javanannv()//报表 JAVA男女
+	{
+		// TODO Auto-generated method stub
+        System.out.println("jiaoshi is start...  ");
+		
+		Db d=new Db();
+		List<Zhiwu> l=d.javanannv();
+		String sjson=com.alibaba.fastjson.JSONArray.toJSONString(l);
+		System.out.println(sjson);
+		return sjson; 
+	}
+
+	@Override
+	public String pythonnannv()//报表 python男女
+	{
+		// TODO Auto-generated method stub
+        System.out.println("jiaoshi is start...  ");
+		
+		Db d=new Db();
+		List<Zhiwu> l=d.pythonnannv();
+		String sjson=com.alibaba.fastjson.JSONArray.toJSONString(l);
+		System.out.println(sjson);
+		return sjson; 
 	}
 
 }

@@ -2,6 +2,31 @@
   "html/login.html": {
     "refer": [
       "html/index.html"
+    ],
+    "resources": []
+  },
+  "html/xuan.html": {
+    "refer": [
+      "html/a.html",
+      "html/b.html",
+      "html/e.html"
+    ],
+    "resources": []
+  },
+  "html/a.html": {
+    "refer": [
+      "html/xuan.html"
+    ],
+    "resources": []
+  },
+  "html/e.html": {
+    "refer": [
+      "html/xuan.html"
+    ]
+  },
+  "html/b.html": {
+    "refer": [
+      "html/xuan.html"
     ]
   }
 }
